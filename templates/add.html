@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% for msg in get_flashed_messages() %}
-  <div>{{ msg }}</div>
-{% endfor %}
-
 <form id="template-add-form" method="POST">
     {{ form.hidden_tag() }} <!--add type=hidden form fields -->
   

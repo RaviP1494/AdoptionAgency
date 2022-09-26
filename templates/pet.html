@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <h1>{{p.name}}</h1>
+    <h6>Species: {{p.species}}</h6>
+    {% if p.age %}
+    <span>Age: {{p.age}}</span>
+    {% endif %}
+    {% if p.img_url %}
+    <img src="{{p.img_url}}" alt="photo unavailable">
+    {% endif %}
+    {% if p.notes %}
+    <p>{{p.notes}}</p>
+    {% endif %}
+</section>
+<section>
+    <form method="POST">
+        {{ form.hidden_tag() }} 
+        <!-- ^ this includes csrf token, WILL NOT validate_on_submit without -->
+        {% for field in form if field.widget.input_type != 'hidden' %}
+
+            {{field.label}}
+            {{field}}
+
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+
+        {% endfor %}
+        <button>Submit</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Adoption Agency </h1>
+    <ul>
+        {% for p in pets %}
+        <li><a href="/pets/{{p.id}}">{{p.name}}</a></li>
+        {% endfor %}
+    </ul>
+    <form action="/add">
+        <button>Add</button>
+    </form>
+
+
+    <script src="static/app.css"></script>
+{% endblock %}
