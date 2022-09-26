@@ -3,7 +3,7 @@
     <h1>Adoption Agency </h1>
     <ul>
         {% for p in pets %}
-        <li><a href="/pets/{{p.id}}">{{p.name}}</a></li>
+        <li><a href="/pets/{{p.id}}">{{p.name}}</a> {% if p.available %} available! {% endif %} </li>
         {% endfor %}
     </ul>
     <form action="/add">

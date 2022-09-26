@@ -23,15 +23,10 @@ def add():
     """Pet add form; handle adding."""
 
     form = AddPetForm()
-    
+        
     if form.validate_on_submit():
-        name = form.name.data
-        species = form.species.data
-        img_url = form.img_url.data
-        age = form.age.data
-        notes = form.notes.data
 
-        p = Pet(name = name, species = species, img_url = img_url, age = age, notes = notes)
+        p = Pet(name = form.name.data, species = form.species.data, img_url = form.img_url.data, age = form.age.data, notes = form.notes.data)
         db.session.add(p)
         db.session.commit()
 
@@ -55,5 +50,4 @@ def pet_view(pid):
         db.session.commit()
         return redirect("/")
     else:
-        print('what is going on')
         return render_template('/pet.html', p = pet, form = form)
